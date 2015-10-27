@@ -1,0 +1,29 @@
+{
+  "generator-m-ionic": {
+    "answers": {
+      "appName": "twitclient6",
+      "appId": "com.mway.twitclient6",
+      "ionicCss": false,
+      "bowerPackages": [
+        "angular-dynamic-locale#~0.1.27",
+        "angular-translate#~2.7.2",
+        "angular-translate-loader-static-files#~2.7.2",
+        "angular-localForage#~1.2.3"
+      ],
+      "platforms": [
+        "ios",
+        "android"
+      ],
+      "plugins": [
+        "cordova-plugin-device",
+        "cordova-plugin-dialogs",
+        "cordova-plugin-inappbrowser",
+        "com.ionic.keyboard",
+        "cordova-plugin-network-information",
+        "cordova-plugin-splashscreen",
+        "cordova-plugin-statusbar"
+      ],
+      "appModule": "twitclient6"
+    }
+  }
+}

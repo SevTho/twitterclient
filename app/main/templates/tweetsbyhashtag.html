@@ -1,0 +1,34 @@
+<ion-view view-title="Tweets">
+  <ion-nav-buttons side="right">
+      <button class='button popoverButton button-clear ion-android-more-vertical' ng-click="openPopover($event)"></button>
+  </ion-nav-buttons>
+  <!-- do you want padding? -->
+  <form ng-submit="submit()">
+  <div class="bar bar-subheader bar-stable item-input-inset">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="search" name="search" ng-focus="focused()" ng-model="searchword" ng-minlength="3" placeholder="Search">
+    </label>
+    <button type="submit" ng-click="submit()" class="button button-clear">
+      Go
+    </button>
+  </div>
+</form>
+  <ion-content class="hide-on-keyboard-open has-subheader">
+   <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+   </ion-refresher>
+    <ion-list ng-repeat="tweet in tweetsbyhashtagC.controllerData.tweets | orderBy:sortval">
+      <ion-item
+        class="item-remove-animate item-avatar item-icon-right"
+        type="item-text-wrap"
+        ui-sref="main.tweetDetail({tweetid:tweet.id_str})">
+        <img ng-src="{{tweet.user.profile_image_url}}" />
+        <p>{{tweet.text}}</p>
+        <p>{{tweet.user.name}} - {{tweet.created_at | StringToDate | date:'dd.MM.yyyy - hh:mm'}}</p>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+
+</ion-view>

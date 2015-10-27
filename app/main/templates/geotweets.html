@@ -1,0 +1,43 @@
+<ion-view view-title="Hashtags" id='geotweetsView'>
+  <ion-nav-buttons side="left">
+    <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
+  </ion-nav-buttons>
+  <!-- do you want padding? -->
+  <form ng-submit="submit()">
+  <div class="bar bar-subheader bar-stable item-input-inset">
+    <label class="item-input-wrapper">
+      <i class="icon ion-ios-search placeholder-icon"></i>
+      <input type="search" name="search" ng-focus="focused()" ng-model="searchword" ng-minlength="3" placeholder="Search">
+    </label>
+    <button type="submit" ng-click="submit()" class="button button-clear">
+      Go
+    </button>
+  </div>
+</form>
+  <ion-content class="hide-on-keyboard-open has-subheader">
+    <ion-list>
+      <ion-item
+        class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
+        <h3 ui-sref="main.tweetsbyhashtag({hashtag:'angular'})">#angular</h3>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item
+        class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
+        <h3 ui-sref="main.tweetsbyhashtag({hashtag:'nice'})">#nice</h3>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item
+        class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
+        <h3 ui-sref="main.tweetsbyhashtag({hashtag:'test'})">#test</h3>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+      <ion-item
+        class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
+        <h3 ui-sref="main.tweetsbyhashtag({hashtag:'hearthstone'})">#hearthstone</h3>
+        <i class="icon ion-chevron-right icon-accessory"></i>
+      </ion-item>
+    </ion-list>
+
+  </ion-content>
+
+</ion-view>

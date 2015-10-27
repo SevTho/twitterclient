@@ -1,0 +1,92 @@
+/*
+To customize the look and feel of Ionic, you can override the variables
+in ionic's _variables.scss file.
+
+For example, you might change some of the default colors:
+*/
+
+$light:                           #fff !default;
+$stable:                          #f8f8f8 !default;
+$positive:                        #4a87ee !default;
+$calm:                            #43cee6 !default;
+$balanced:                        #66cc33 !default;
+$energized:                       #f0b840 !default;
+$assertive:                       #ef4e3a !default;
+$royal:                           #8a6de9 !default;
+$dark:                            #444 !default;
+
+// The path for our ionicons font files, relative to the built & temporary main.css
+$ionicons-font-path: "../assets/fonts" !default;
+
+// Include all of Ionic
+@import "../../bower_components/ionic/scss/ionic";
+
+#geotweetsView{
+
+  .item-content, .item-avatar{
+    min-height:0px !important;
+    padding-left:20px !important;
+  }
+
+}
+
+ion-popover-view
+{
+  height: 160px !important;
+}
+
+.popoverButton
+{
+  margin-right:10px;
+}
+
+.tabs
+{
+  border-color:transparent !important;
+  background-image:none !important;
+  background-color:#4a87ee !important;
+}
+
+.back-button
+{
+  margin-left:5px;
+}
+
+.back-text
+{
+  display:none !important;
+}
+
+.twitter-tweet
+{
+  border-left:0px !important;
+  margin:0;
+  padding:0;
+}
+
+.bar-blue
+{
+  background-color:#4a87ee !important;
+}
+
+.card
+{
+  .firstline
+  {
+    margin-bottom:15px;
+    display: flex;
+    align-items: center;
+
+    span
+    {
+      width:100%;
+      text-align: center;
+    }
+  }
+
+  .secondline
+  {
+    margin-bottom:10px;
+  }
+
+}
