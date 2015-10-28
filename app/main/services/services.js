@@ -5,7 +5,8 @@ angular.module('main')
   this.serviceData = {
     tweets: [],
     tweet: null,
-    hashtag: '#angular'
+    hashtag: '#angular',
+    hashtags: ['test']
   };
 
   var consumerKey = encodeURIComponent('BzQ15IBII9c5rvJBfY2qHs2XW');
@@ -108,19 +109,35 @@ angular.module('main')
     }
   };
 
-  this.getGeoHashtags = function ()
+  this.getGeoHashtags = function (latitude, longitude)
   {
-    var query = 'select * from geo.placefinder where text="48.80862630000001, 9.1786435" and gflags="R"';
-    return $http({
-      method: 'GET',
-      url: 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json',
-    }).then(function successCallback (response) {
-      console.log('test');
-      console.log(response);
-      return response;
-    }, function errorCallback (error) {
-      console.error(error);
-      return error;
+    var that = this;
+    that.getToken().then(function () {
+      return $http({
+        method: 'GET',
+        url: 'https://api.twitter.com/1.1/trends/closest.json?lat=' + latitude + '&long=' + longitude + ''
+      }).then(function successCallback (response) {
+        console.log(response);
+        var woeid = response.data[0].woeid;
+        return $http({
+          method: 'GET',
+          url: 'https://api.twitter.com/1.1/trends/place.json',
+          params: {id: woeid}
+        }).then(function successCallback (response) {
+          var hashtags = response.data[0].trends;
+          that.serviceData.hashtags = response.data[0].trends;
+          $ionicLoading.hide();
+          return hashtags;
+        }, function errorCallback (error) {
+          $ionicLoading.hide();
+          console.error(error);
+          return error;
+        });
+      }, function errorCallback (error) {
+        $ionicLoading.hide();
+        console.error(error);
+        return error;
+      });
     });
   };
 

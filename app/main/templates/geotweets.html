@@ -15,25 +15,10 @@
   </div>
 </form>
   <ion-content class="hide-on-keyboard-open has-subheader">
-    <ion-list>
+    <ion-list ng-repeat="hashtag in geotweetsC.controllerData.hashtags">
       <ion-item
         class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
-        <h3 ui-sref="main.tweetsbyhashtag({hashtag:'angular'})">#angular</h3>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-      </ion-item>
-      <ion-item
-        class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
-        <h3 ui-sref="main.tweetsbyhashtag({hashtag:'nice'})">#nice</h3>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-      </ion-item>
-      <ion-item
-        class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
-        <h3 ui-sref="main.tweetsbyhashtag({hashtag:'test'})">#test</h3>
-        <i class="icon ion-chevron-right icon-accessory"></i>
-      </ion-item>
-      <ion-item
-        class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
-        <h3 ui-sref="main.tweetsbyhashtag({hashtag:'hearthstone'})">#hearthstone</h3>
+        <h3 ui-sref="main.tweetsbyhashtag({hashtag:hashtag.name})">{{hashtag.name}}</h3>
         <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
     </ion-list>

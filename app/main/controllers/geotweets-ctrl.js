@@ -1,10 +1,17 @@
 'use strict';
 angular.module('main')
-.controller('GeotweetsCtrl', function ($scope, $state, $ionicSideMenuDelegate, Main) {
+.controller('GeotweetsCtrl', function ($scope, $state, $ionicLoading, $ionicSideMenuDelegate, Main) {
+
+  $ionicLoading.show({
+    template: '<ion-spinner></ion-spinner>'
+  });
+
+  this.controllerData = Main.serviceData;
+  console.log(this.controllerData);
 
   var onSuccess = function (position) {
-    console.log('Latitude: ' + position.coords.latitude + '\n' + 'Longitude: ' + position.coords.longitude);
-    Main.getGeoHashtags();
+    console.log('Coordinates -> Latitude: ' + position.coords.latitude + '\n' + 'Longitude: ' + position.coords.longitude);
+    Main.getGeoHashtags(position.coords.latitude, position.coords.longitude);
   };
 
   function onError (error) {

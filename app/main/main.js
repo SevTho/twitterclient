@@ -3,7 +3,7 @@ angular.module('main', [
   'ionic',
   'ngCordova',
   'ui.router',
-  // TODO: load other modules selected during generation
+  'ngIOS9UIWebViewPatch'
 ])
 angular
  .module('ionic')
@@ -15,7 +15,7 @@ angular
    }])
  }])
 .config(function ($stateProvider, $urlRouterProvider) {
-
+  console.log('test');
   // ROUTING with ui.router
   $urlRouterProvider.otherwise('/main/geotweets');
   $stateProvider
