@@ -1,4 +1,4 @@
-<ion-view view-title="Hashtags" id='geotweetsView'>
+<ion-view view-title="Twitter Trends" id='geotweetsView'>
   <ion-nav-buttons side="left">
     <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
   </ion-nav-buttons>
@@ -17,8 +17,8 @@
   <ion-content class="hide-on-keyboard-open has-subheader">
     <ion-list ng-repeat="hashtag in geotweetsC.controllerData.hashtags">
       <ion-item
-        class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap">
-        <h3 ui-sref="main.tweetsbyhashtag({hashtag:hashtag.name})">{{hashtag.name}}</h3>
+        class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" ui-sref="main.tweetsbyhashtag({hashtag:hashtag.name})">
+        <h3>{{hashtag.name}}</h3>
         <i class="icon ion-chevron-right icon-accessory"></i>
       </ion-item>
     </ion-list>
