@@ -70,6 +70,15 @@ angular
             controller: 'ImprintCtrl as imprintC'
           }
         }
+      })
+      .state('main.network', {
+        url: '/network',
+        views: {
+          'tab-network': {
+            templateUrl: 'main/templates/network.html',
+            controller: 'NetworkCtrl as networkC'
+          }
+        }
       });
 }).config(function ($ionicConfigProvider) {
   $ionicConfigProvider.backButton.text('Go Back').icon('ion-chevron-left');

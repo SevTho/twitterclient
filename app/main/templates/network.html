@@ -1,4 +1,4 @@
-<ion-view view-title="Imprint">
+<ion-view view-title="Network">
   <ion-nav-buttons side="left">
     <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
   </ion-nav-buttons>
@@ -7,25 +7,16 @@
 
     <div class="list">
       <div class="item item-divider">
-        Company
+        Type
       </div>
       <a class="item" href="#">
-        M-Way Solutions GmbH
+        {{networkC.controllerData.Networktype}}
       </a>
       <div class="item item-divider">
-        About us
+        State
       </div>
       <a class="item" href="#">
-        Some Text Some Text Some Text Some Text<br/>
-        Some Text Some Text Some Text Some Text
-      </a>
-      <div class="item item-divider">
-        Where you can find us
-      </div>
-      <a class="item" href="#">
-        Stresemannstrasse 79<br />
-        82392 Stuttgart<br />
-        Germany
+        {{networkC.controllerData.State}}
       </a>
     </div>
 

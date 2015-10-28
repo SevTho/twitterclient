@@ -6,7 +6,7 @@ angular.module('main')
     tweets: [],
     tweet: null,
     hashtag: '#angular',
-    hashtags: ['test']
+    hashtags: ['']
   };
 
   var consumerKey = encodeURIComponent('BzQ15IBII9c5rvJBfY2qHs2XW');
