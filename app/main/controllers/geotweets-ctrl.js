@@ -1,13 +1,10 @@
 'use strict';
 angular.module('main')
-.controller('GeotweetsCtrl', function ($scope, $state, $ionicLoading, $ionicSideMenuDelegate, TwitterService) {
-
-  $ionicLoading.show({
-    template: '<ion-spinner></ion-spinner>'
-  });
+.controller('GeotweetsCtrl', function ($scope, $state, $ionicSideMenuDelegate, TwitterService, Main) {
 
   this.controllerData = TwitterService.serviceData;
-  console.log(this.controllerData);
+
+  Main.showLoader();
 
   var onSuccess = function (position) {
     console.log('Coordinates -> Latitude: ' + position.coords.latitude + '\n' + 'Longitude: ' + position.coords.longitude);

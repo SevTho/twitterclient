@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-.service('TwitterService', function ($log, $ionicPlatform, $state, $window, $http, $ionicLoading) {
+.service('TwitterService', function ($log, $ionicPlatform, $state, $window, $http, Main) {
 
   this.serviceData = {
     tweets: [],
@@ -31,7 +31,7 @@ angular.module('main')
       return true;
     })
     .catch(function (error) {
-      return console.error(error);
+      return Main.showAlert(error);
     });
   };
 
@@ -40,41 +40,38 @@ angular.module('main')
   {
     var that = this;
     console.log(that.serviceData.hashtag);
-    if (loader === 'noloader') {
+    if (loader === 'loader') {
+      Main.showLoader();
       return $http({
         method: 'GET',
         url: 'https://api.twitter.com/1.1/search/tweets.json',
         params: {q: that.serviceData.hashtag, 'result_type': 'recent', count: 30 }
       }).then(function successCallback (response) {
         that.serviceData.tweets = response.data.statuses;
-        $ionicLoading.hide();
+        Main.hideLoader();
         return response;
       }, function errorCallback (error) {
-        console.error(error);
-        return error;
+        Main.hideLoader();
+        return Main.showAlert(error);
       });
     }
     else {
-      $ionicLoading.show({
-        template: '<ion-spinner></ion-spinner>'
-      });
       return $http({
         method: 'GET',
         url: 'https://api.twitter.com/1.1/search/tweets.json',
         params: {q: that.serviceData.hashtag, 'result_type': 'recent', count: 30 }
       }).then(function successCallback (response) {
         that.serviceData.tweets = response.data.statuses;
-        $ionicLoading.hide();
         return response;
       }, function errorCallback (error) {
-        console.error(error);
-        return error;
+        return Main.showAlert(error);
       });
     }
   };
 
   this.getTweetbyID = function (twitterid)
   {
+    Main.showLoader();
     var that = this;
     return $http({
       method: 'GET',
@@ -82,10 +79,11 @@ angular.module('main')
       params: {id: twitterid}
     }).then(function successCallback (response) {
       that.serviceData.tweet = response.data;
+      Main.hideLoader();
       return response;
     }, function errorCallback (error) {
-      console.error(error);
-      return error;
+      Main.hideLoader();
+      return Main.showAlert(error);
     });
   };
 
@@ -105,17 +103,15 @@ angular.module('main')
       }).then(function successCallback (response) {
         var hashtags = response.data[0].trends;
         that.serviceData.hashtags = response.data[0].trends;
-        $ionicLoading.hide();
+        Main.hideLoader();
         return hashtags;
-      }, function errorCallback (error) {
-        $ionicLoading.hide();
-        console.error(error);
-        return error;
+      }, function errorCallback () {
+        Main.hideLoader();
+        return Main.showAlert('Could not connect with Twitter, Try again in 15 minutes');
       });
-    }, function errorCallback (error) {
-      $ionicLoading.hide();
-      console.error(error);
-      return error;
+    }, function errorCallback () {
+      Main.hideLoader();
+      return Main.showAlert('Could not connect with Twitter, Try again in 15 minutes');
     });
   };
 });

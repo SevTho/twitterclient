@@ -24,3 +24,9 @@
 # IDE
 *.sublime-project
 *.sublime-workspace
+
+#test files
+/test
+
+#res
+/res

@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-.service('Main', function ($log, $ionicPlatform, $state, $window) {
+.service('Main', function ($log, $ionicPlatform, $state, $window, $ionicLoading, $ionicPopup) {
 
   //InApp Browser
   this.browse = function (url)
@@ -22,4 +22,25 @@ angular.module('main')
       });
     }
   };
+
+  this.showLoader = function ()
+  {
+    $ionicLoading.show({
+      template: '<ion-spinner></ion-spinner>'
+    });
+  };
+
+  this.hideLoader = function ()
+  {
+    $ionicLoading.hide();
+  };
+
+  this.showAlert = function (text)
+  {
+    $ionicPopup.alert({
+      title: 'Fehler',
+      template: text
+    });
+  }
+
 });

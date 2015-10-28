@@ -15,7 +15,6 @@ angular.module('main')
 
   TwitterService.getTweetsByHashtag('loader').then(function ()
   {
-    console.log('test');
     console.log(that.controllerData.tweets);
   });
 
