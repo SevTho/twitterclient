@@ -23,7 +23,12 @@ angular
       url: '/main',
       abstract: true,
       templateUrl: 'main/templates/tabs.html',
-      controller: 'TabsCtrl as tabsC'
+      controller: 'TabsCtrl as tabsC',
+      resolve: {
+        item: function (Main) {
+          return Main.checkConnection()
+        }
+      }
     })
       .state('main.geotweets', {
         url: '/geotweets',

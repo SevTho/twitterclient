@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-.service('Main', function ($log, $ionicPlatform, $state, $window, $ionicLoading, $ionicPopup) {
+.service('Main', function ($log, $ionicPlatform, $state, $window, $ionicLoading, $ionicPopup, $cordovaNetwork) {
 
   //InApp Browser
   this.browse = function (url)
@@ -41,6 +41,17 @@ angular.module('main')
       title: 'Fehler',
       template: text
     });
+  }
+
+  this.checkConnection = function ()
+  {
+    var that = this;
+    if (ionic.Platform.isWebView()) {
+      if (!$cordovaNetwork.isOnline()) {
+        that.showAlert('You want to connect with twitter without Connection to the Internet ?');
+        throw new Error('This is not an error. This is just to abort javascript');
+      }
+    }
   }
 
 });
