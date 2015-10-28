@@ -1,6 +1,6 @@
 'use strict';
 angular.module('main')
-.controller('TweetDetailCtrl', function ($log, $scope, $ionicSideMenuDelegate, $stateParams, Main) {
+.controller('TweetDetailCtrl', function ($log, $scope, $ionicSideMenuDelegate, $stateParams, Main, TwitterService) {
 
   $scope.openMenu = function () {
     $ionicSideMenuDelegate.toggleLeft();
@@ -9,14 +9,12 @@ angular.module('main')
   var twitterid = $stateParams.tweetid;
   console.log(twitterid);
 
-  this.controllerData = Main.serviceData;
+  this.controllerData = TwitterService.serviceData;
   var that = this;
 
-  Main.getToken().then(function () {
-    Main.getTweetbyID(twitterid).then(function ()
-    {
-      console.log(that.controllerData.tweet);
-    });
+  TwitterService.getTweetbyID(twitterid).then(function ()
+  {
+    console.log(that.controllerData.tweet);
   });
 
   this.getLink = function ($event)

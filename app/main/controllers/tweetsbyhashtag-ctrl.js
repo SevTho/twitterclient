@@ -1,42 +1,38 @@
 'use strict';
 angular.module('main')
-.controller('TweetsbyhashtagCtrl', function ($stateParams, $ionicSideMenuDelegate, $log, $ionicPlatform, $window, $scope, $ionicPopover, $filter, Main) {
+.controller('TweetsbyhashtagCtrl', function ($stateParams, $ionicSideMenuDelegate, $log, $ionicPlatform, $window, $scope, $ionicPopover, $filter, TwitterService) {
 
   $scope.openMenu = function () {
     $ionicSideMenuDelegate.toggleLeft();
   }
 
-  this.controllerData = Main.serviceData;
+  this.controllerData = TwitterService.serviceData;
   var that = this;
 
   var hashtag = $stateParams.hashtag;
-  Main.serviceData.hashtag = hashtag;
+  TwitterService.serviceData.hashtag = hashtag;
   console.log(hashtag);
 
-  Main.getToken().then(function () {
-    Main.getTweetsByHashtag('loader').then(function ()
-    {
-      console.log('test');
-      console.log(that.controllerData.tweets);
-    });
+  TwitterService.getTweetsByHashtag('loader').then(function ()
+  {
+    console.log('test');
+    console.log(that.controllerData.tweets);
   });
 
   $scope.doRefresh = function ()
   {
-    Main.getToken().then(function () {
-      Main.getTweetsByHashtag('noloader').then(function ()
-      {
-        $scope.$broadcast('scroll.refreshComplete')
-      });
+    TwitterService.getTweetsByHashtag('noloader').then(function ()
+    {
+      $scope.$broadcast('scroll.refreshComplete')
     });
   }
 
   $scope.submit = function ()
   {
     console.log('input submit');
-    Main.serviceData.hashtag = $scope.searchword;
-    Main.getTweetsByHashtag();
-    console.log(Main.serviceData.searchword)
+    TwitterService.serviceData.hashtag = $scope.searchword;
+    TwitterService.getTweetsByHashtag();
+    console.log(TwitterService.serviceData.searchword)
     document.activeElement.blur();
   };
 

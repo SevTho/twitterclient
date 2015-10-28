@@ -15,7 +15,6 @@ angular
    }])
  }])
 .config(function ($stateProvider, $urlRouterProvider) {
-  console.log('test');
   // ROUTING with ui.router
   $urlRouterProvider.otherwise('/main/geotweets');
   $stateProvider
@@ -31,7 +30,12 @@ angular
         views: {
           'tab-tweets': {
             templateUrl: 'main/templates/geotweets.html',
-            controller: 'GeotweetsCtrl as geotweetsC'
+            controller: 'GeotweetsCtrl as geotweetsC',
+            resolve: {
+              item: function (TwitterService) {
+                return TwitterService.getToken()
+              }
+            }
           }
         }
       })
