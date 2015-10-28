@@ -108,4 +108,20 @@ angular.module('main')
     }
   };
 
+  this.getGeoHashtags = function ()
+  {
+    var query = 'select * from geo.placefinder where text="48.80862630000001, 9.1786435" and gflags="R"';
+    return $http({
+      method: 'GET',
+      url: 'http://query.yahooapis.com/v1/public/yql?q=' + encodeURIComponent(query) + '&format=json',
+    }).then(function successCallback (response) {
+      console.log('test');
+      console.log(response);
+      return response;
+    }, function errorCallback (error) {
+      console.error(error);
+      return error;
+    });
+  };
+
 });
