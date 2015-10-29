@@ -1,20 +1,22 @@
 'use strict';
 angular.module('main')
-.service('TwitterService', function ($log, $ionicPlatform, $state, $window, $http, Main) {
+.service('TwitterService', function ($log, $ionicPlatform, $state, $window, $http, $translate, Main) {
 
   this.serviceData = {
     tweets: [],
     tweet: null,
     hashtag: '#angular',
-    hashtags: ['']
+    hashtags: [''],
+    consumerSecret: encodeURIComponent('K7i7xlG55ENzUpr5KchJH0E9AdFsexUKLUARmAEWeZXm2aCtGE'),
+    consumerKey: encodeURIComponent('BzQ15IBII9c5rvJBfY2qHs2XW')
   };
 
-  var consumerKey = encodeURIComponent('BzQ15IBII9c5rvJBfY2qHs2XW');
-  var consumerSecret = encodeURIComponent('K7i7xlG55ENzUpr5KchJH0E9AdFsexUKLUARmAEWeZXm2aCtGE');
-
-  //Get twitter security token
+  /***************************************
+  /* Get Twitter Security Token
+  ***************************************/
   this.getToken = function () {
-    var tokenCredentials = $window.btoa(consumerKey + ':' + consumerSecret);
+    var that = this;
+    var tokenCredentials = $window.btoa(that.serviceData.consumerKey + ':' + that.serviceData.consumerSecret);
     return $http({
       method: 'POST',
       url: 'https://api.twitter.com/oauth2/token',
@@ -31,15 +33,18 @@ angular.module('main')
       return true;
     })
     .catch(function () {
-      return Main.showAlert('Error 001: Could not get twitter security token');
+      Main.hideLoader();
+      return Main.showAlert($translate.instant('ERROR002'));
     });
   };
 
-  //Get Tweets by Hashtag
+  /***************************************
+  /* Get Tweets based on Hashtag
+  /* Parameters: loader
+  ***************************************/
   this.getTweetsByHashtag = function (loader)
   {
     var that = this;
-    console.log(that.serviceData.hashtag);
     if (loader === 'loader') {
       Main.showLoader();
       return $http({
@@ -52,7 +57,7 @@ angular.module('main')
         return response;
       }, function errorCallback () {
         Main.hideLoader();
-        return Main.showAlert('Error 002: Couldnt not connect with Twitter');
+        return Main.showAlert($translate.instant('ERROR003'));
       });
     }
     else {
@@ -64,11 +69,15 @@ angular.module('main')
         that.serviceData.tweets = response.data.statuses;
         return response;
       }, function errorCallback () {
-        return Main.showAlert('Error 003: Could not Connect with Twitter');
+        return Main.showAlert($translate.instant('ERROR003'));
       });
     }
   };
 
+  /***************************************
+  /* Get Twitter Tweets based on TweetID
+  /* Parameters: twitterid
+  ***************************************/
   this.getTweetbyID = function (twitterid)
   {
     Main.showLoader();
@@ -83,10 +92,14 @@ angular.module('main')
       return response;
     }, function errorCallback () {
       Main.hideLoader();
-      return Main.showAlert('Error 004: Could not connect with Twitter');
+      return Main.showAlert($translate.instant('ERROR003'));
     });
   };
 
+  /***************************************
+  /* Get Trending Hashtags based on WOEID
+  /* Parameters: latitude, longitude
+  ***************************************/
   this.getGeoHashtags = function (latitude, longitude)
   {
     var that = this;
@@ -94,7 +107,6 @@ angular.module('main')
       method: 'GET',
       url: 'https://api.twitter.com/1.1/trends/closest.json?lat=' + latitude + '&long=' + longitude + ''
     }).then(function successCallback (response) {
-      console.log(response);
       var woeid = response.data[0].woeid;
       return $http({
         method: 'GET',
@@ -107,11 +119,11 @@ angular.module('main')
         return hashtags;
       }, function errorCallback () {
         Main.hideLoader();
-        return Main.showAlert('Error 005: Could not connect with Twitter');
+        return Main.showAlert($translate.instant('ERROR003'));
       });
     }, function errorCallback () {
       Main.hideLoader();
-      return Main.showAlert('Error 006:Could not connect with Twitter');
+      return Main.showAlert($translate.instant('ERROR004'));
     });
   };
 });

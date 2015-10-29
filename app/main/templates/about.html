@@ -1,28 +1,27 @@
-<ion-view view-title="About">
+<ion-view view-title="{{'ABOUT' | translate}}">
   <ion-nav-buttons side="left">
     <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
   </ion-nav-buttons>
-  <!-- do you want padding? -->
   <ion-content>
 
     <div class="list">
       <div class="item item-divider">
-        Appname
+        {{"NAME_LABEL" | translate}}
       </div>
       <p class="item">
-        Twitter Client
+        {{"APPNAME" | translate}}
       </p>
       <div class="item item-divider">
-        Author
+        {{"AUTHOR_LABEL" | translate}}
       </div>
       <p class="item">
-        Severino Thomasin
+        {{"AUTHORNAME" | translate}}
       </p>
       <div class="item item-divider">
-        Version
+        {{"VERSION_LABEL" | translate}}
       </div>
       <p class="item">
-        0.6
+        {{"VERSION" | translate}}
       </p>
     </div>
 

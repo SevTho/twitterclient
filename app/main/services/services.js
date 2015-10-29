@@ -1,11 +1,12 @@
 'use strict';
 angular.module('main')
-.service('Main', function ($log, $ionicPlatform, $state, $window, $ionicLoading, $ionicPopup, $cordovaNetwork) {
+.service('Main', function ($log, $ionicPlatform, $state, $window, $ionicLoading, $ionicPopup, $translate, $cordovaNetwork) {
 
-  //InApp Browser
+  /***************************************
+  /* InApp Browser
+  ***************************************/
   this.browse = function (url)
   {
-    console.log(url);
     if (ionic.Platform.isWebView()) {
       $window.webview.openWebView(null, null, {
         iconColor: '#ffffff',
@@ -23,6 +24,9 @@ angular.module('main')
     }
   };
 
+  /***************************************
+  /* Show Loader
+  ***************************************/
   this.showLoader = function ()
   {
     $ionicLoading.show({
@@ -30,25 +34,35 @@ angular.module('main')
     });
   };
 
+  /***************************************
+  /* Hide Loader
+  ***************************************/
   this.hideLoader = function ()
   {
     $ionicLoading.hide();
   };
 
+  /***************************************
+  /* Show Error Message
+  /* Parameters: text
+  ***************************************/
   this.showAlert = function (text)
   {
     $ionicPopup.alert({
-      title: 'Fehler',
+      title: $translate.instant('ERROR_LABEL'),
       template: text
     });
   }
 
+  /***************************************
+  /* Check if Device is Online
+  ***************************************/
   this.checkConnection = function ()
   {
     var that = this;
     if (ionic.Platform.isWebView()) {
       if (!$cordovaNetwork.isOnline()) {
-        that.showAlert('You want to connect with twitter without Connection to the Internet ?');
+        that.showAlert($translate.instant('ERROR001'));
       }
     }
   }

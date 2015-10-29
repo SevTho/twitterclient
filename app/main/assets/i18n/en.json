@@ -1,0 +1,15 @@
+{
+  "ERROR_LABEL": "Error",
+  "NAME_LABEL": "Applicationname",
+  "APPNAME": "Twitter Client",
+  "AUTHOR_LABEL": "Author",
+  "AUTHORNAME": "Severino Thomasin",
+  "VERSION_LABEL": "Version",
+  "VERSION": "0.7",
+  "PULLTOREFRESH": "Pull to Refresh",
+  "ABOUT": "About",
+  "ERROR001": "No Connection<br/>pls check your Internet-Connection",
+  "ERROR002": "Could not generate twitter security token",
+  "ERROR003": "Could not connect with Twitter",
+  "ERROR004": "To many Requests<br/>Come back in 15 minutes"
+}

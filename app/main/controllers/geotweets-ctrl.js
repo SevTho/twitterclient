@@ -8,8 +8,10 @@ angular.module('main')
 
   Main.showLoader();
 
+  //Android Geolocation Parameters
   var options = { enableHighAccuracy: true, timeout: 21000, maximumAge: 0};
 
+  //Get Current Location, then get trending hashtags based on location
   $cordovaGeolocation.getCurrentPosition(options)
   .then(function (position) {
     console.log('Coordinates -> Latitude: ' + position.coords.latitude + '\n' + 'Longitude: ' + position.coords.longitude);
