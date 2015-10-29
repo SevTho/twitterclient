@@ -58,6 +58,9 @@ angular.module('main')
     $scope.popover.hide();
   };
 
+  //
+  //Sort Tweets
+  //Options: author, date
   $scope.sortTweets = function (input) {
     switch (input) {
       case 'date':
