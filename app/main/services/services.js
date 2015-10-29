@@ -49,7 +49,6 @@ angular.module('main')
     if (ionic.Platform.isWebView()) {
       if (!$cordovaNetwork.isOnline()) {
         that.showAlert('You want to connect with twitter without Connection to the Internet ?');
-        throw new Error('This is not an error. This is just to abort javascript');
       }
     }
   }

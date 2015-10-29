@@ -25,7 +25,7 @@ angular
       templateUrl: 'main/templates/tabs.html',
       controller: 'TabsCtrl as tabsC',
       resolve: {
-        item: function (Main) {
+        itemM: function (Main) {
           return Main.checkConnection()
         }
       }
@@ -37,7 +37,7 @@ angular
             templateUrl: 'main/templates/geotweets.html',
             controller: 'GeotweetsCtrl as geotweetsC',
             resolve: {
-              item: function (TwitterService) {
+              itemG: function (TwitterService) {
                 return TwitterService.getToken()
               }
             }

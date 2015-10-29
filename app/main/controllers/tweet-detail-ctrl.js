@@ -19,7 +19,6 @@ angular.module('main')
 
   this.getLink = function ($event)
   {
-    console.log('test');
     if ($event.srcElement.tagName === 'A' && $event.srcElement.href !== '') {
       if (ionic.Platform.isWebView()) {
         $event.preventDefault();

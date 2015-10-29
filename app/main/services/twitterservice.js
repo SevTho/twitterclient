@@ -30,8 +30,8 @@ angular.module('main')
       }
       return true;
     })
-    .catch(function (error) {
-      return Main.showAlert(error);
+    .catch(function () {
+      return Main.showAlert('Could not get twitter security token');
     });
   };
 
@@ -81,9 +81,9 @@ angular.module('main')
       that.serviceData.tweet = response.data;
       Main.hideLoader();
       return response;
-    }, function errorCallback (error) {
+    }, function errorCallback () {
       Main.hideLoader();
-      return Main.showAlert(error);
+      return Main.showAlert('Could not connect with Twitter');
     });
   };
 
