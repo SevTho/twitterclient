@@ -1,4 +1,4 @@
-<ion-view view-title="Network">
+<ion-view view-title="{{'NETWORK' | translate}}">
   <ion-nav-buttons side="left">
     <button class="button button-icon button-clear ion-navicon" ng-click="openMenu()"></button>
   </ion-nav-buttons>
@@ -7,13 +7,13 @@
 
     <div class="list">
       <div class="item item-divider">
-        Type
+        {{'TYPE' | translate}}
       </div>
       <p class="item">
         {{networkC.controllerData.Networktype}}
       </p>
       <div class="item item-divider">
-        State
+        {{'STATE' | translate}}
       </div>
       <p class="item">
         {{networkC.controllerData.State}}

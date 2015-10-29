@@ -11,5 +11,20 @@
   "ERROR001": "No Connection<br/>pls check your Internet-Connection",
   "ERROR002": "Could not generate twitter security token",
   "ERROR003": "Could not connect with Twitter",
-  "ERROR004": "To many Requests<br/>Come back in 15 minutes"
+  "ERROR004": "To many Requests<br/>Come back in 15 minutes",
+  "TWEETS": "Tweets",
+  "GO": "GO",
+  "TWEET_DETAILS": "Tweet Details",
+  "IMPRINT": "Imprint",
+  "NETWORK": "Network",
+  "TYPE": "Type",
+  "STATE": "State",
+  "COMPANY_LABEL": "Company",
+  "COMPANY": "M-Way Solutions GmbH",
+  "ABOUT_US_LABEL": "About us",
+  "ABOUT_US": "M-Way Solutions is a provider of Mobile<br />Enterprise Software and Services",
+  "WHERE_TO_FIND": "Where you can find us",
+  "STREET": "Stresemannstrasse 79",
+  "CITY": "82392 Stuttgart",
+  "COUNTRY": "Germany"
 }

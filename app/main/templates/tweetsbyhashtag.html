@@ -1,4 +1,4 @@
-<ion-view view-title="Tweets">
+<ion-view view-title="{{'TWEETS' | translate}}">
   <ion-nav-buttons side="right">
       <button class='button popoverButton button-clear ion-android-more-vertical' ng-click="openPopover($event)"></button>
   </ion-nav-buttons>
@@ -10,12 +10,12 @@
       <input type="search" name="search" ng-focus="focused()" ng-model="searchword" ng-minlength="3" placeholder="Search">
     </label>
     <button type="submit" ng-click="submit()" class="button button-clear">
-      Go
+      {{'GO' | translate}}
     </button>
   </div>
 </form>
   <ion-content class="hide-on-keyboard-open has-subheader">
-   <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+   <ion-refresher pulling-text="{{'PULLTOREFRESH' | translate}}" on-refresh="doRefresh()">
    </ion-refresher>
     <ion-list ng-repeat="tweet in tweetsbyhashtagC.controllerData.tweets | orderBy:sortval">
       <ion-item
