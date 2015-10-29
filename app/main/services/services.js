@@ -4,6 +4,7 @@ angular.module('main')
 
   /***************************************
   /* InApp Browser
+  /* Parameters: url [string]
   ***************************************/
   this.browse = function (url)
   {
@@ -44,7 +45,7 @@ angular.module('main')
 
   /***************************************
   /* Show Error Message
-  /* Parameters: text
+  /* Parameters: text [string]
   ***************************************/
   this.showAlert = function (text)
   {

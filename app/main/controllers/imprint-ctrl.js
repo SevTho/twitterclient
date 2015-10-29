@@ -2,7 +2,9 @@
 angular.module('main')
 .controller('ImprintCtrl', function ($log, $scope, $ionicSideMenuDelegate) {
 
-  //Open Side Menu
+  /***************************************
+  /* Open Sidemenu
+  ***************************************/
   $scope.openMenu = function () {
     $ionicSideMenuDelegate.toggleLeft();
   }

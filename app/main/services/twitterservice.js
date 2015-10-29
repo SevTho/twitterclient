@@ -40,7 +40,7 @@ angular.module('main')
 
   /***************************************
   /* Get Tweets based on Hashtag
-  /* Parameters: loader
+  /* Parameters: loader [bool]
   ***************************************/
   this.getTweetsByHashtag = function (loader)
   {
@@ -76,7 +76,7 @@ angular.module('main')
 
   /***************************************
   /* Get Twitter Tweets based on TweetID
-  /* Parameters: twitterid
+  /* Parameters: twitterid [int]
   ***************************************/
   this.getTweetbyID = function (twitterid)
   {
@@ -98,7 +98,7 @@ angular.module('main')
 
   /***************************************
   /* Get Trending Hashtags based on WOEID
-  /* Parameters: latitude, longitude
+  /* Parameters: latitude, longitude [int, int]
   ***************************************/
   this.getGeoHashtags = function (latitude, longitude)
   {

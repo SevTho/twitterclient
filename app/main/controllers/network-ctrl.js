@@ -7,7 +7,9 @@ angular.module('main')
     State: null
   };
 
-  //Get Informations about the Device Connection
+  /**********************************************
+  /* Get Information about the Device Connection
+  ***********************************************/
   if (ionic.Platform.isWebView()) {
     this.controllerData.Networktype = $cordovaNetwork.getNetwork();
     if ($cordovaNetwork.isOnline()) {
