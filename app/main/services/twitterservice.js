@@ -31,7 +31,7 @@ angular.module('main')
       return true;
     })
     .catch(function () {
-      return Main.showAlert('Could not get twitter security token');
+      return Main.showAlert('Error 001: Could not get twitter security token');
     });
   };
 
@@ -50,9 +50,9 @@ angular.module('main')
         that.serviceData.tweets = response.data.statuses;
         Main.hideLoader();
         return response;
-      }, function errorCallback (error) {
+      }, function errorCallback () {
         Main.hideLoader();
-        return Main.showAlert(error);
+        return Main.showAlert('Error 002: Couldnt not connect with Twitter');
       });
     }
     else {
@@ -63,8 +63,8 @@ angular.module('main')
       }).then(function successCallback (response) {
         that.serviceData.tweets = response.data.statuses;
         return response;
-      }, function errorCallback (error) {
-        return Main.showAlert(error);
+      }, function errorCallback () {
+        return Main.showAlert('Error 003: Could not Connect with Twitter');
       });
     }
   };
@@ -83,7 +83,7 @@ angular.module('main')
       return response;
     }, function errorCallback () {
       Main.hideLoader();
-      return Main.showAlert('Could not connect with Twitter');
+      return Main.showAlert('Error 004: Could not connect with Twitter');
     });
   };
 
@@ -107,11 +107,11 @@ angular.module('main')
         return hashtags;
       }, function errorCallback () {
         Main.hideLoader();
-        return Main.showAlert('Could not connect with Twitter, Try again in 15 minutes');
+        return Main.showAlert('Error 005: Could not connect with Twitter');
       });
     }, function errorCallback () {
       Main.hideLoader();
-      return Main.showAlert('Could not connect with Twitter, Try again in 15 minutes');
+      return Main.showAlert('Error 006:Could not connect with Twitter');
     });
   };
 });

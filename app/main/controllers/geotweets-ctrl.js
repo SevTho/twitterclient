@@ -4,6 +4,8 @@ angular.module('main')
 
   this.controllerData = TwitterService.serviceData;
 
+  var positionG = null;
+
   Main.showLoader();
 
   var options = { enableHighAccuracy: true, timeout: 21000, maximumAge: 0};
@@ -11,12 +13,21 @@ angular.module('main')
   $cordovaGeolocation.getCurrentPosition(options)
   .then(function (position) {
     console.log('Coordinates -> Latitude: ' + position.coords.latitude + '\n' + 'Longitude: ' + position.coords.longitude);
+    positionG = position.coords;
     TwitterService.getGeoHashtags(position.coords.latitude, position.coords.longitude);
-  }, function (error) {
+  }, function () {
     Main.hideLoader();
-    console.log(error);
-    Main.showAlert(error);
+    console.log();
+    Main.showAlert('Problem with Geolocation');
   });
+
+  $scope.doRefresh = function ()
+  {
+    TwitterService.getGeoHashtags(positionG.latitude, positionG.longitude).then(function ()
+    {
+      $scope.$broadcast('scroll.refreshComplete')
+    });
+  }
 
   $scope.openMenu = function () {
     $ionicSideMenuDelegate.toggleLeft();

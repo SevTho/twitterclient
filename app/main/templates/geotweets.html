@@ -15,6 +15,8 @@
   </div>
 </form>
   <ion-content class="hide-on-keyboard-open has-subheader">
+    <ion-refresher pulling-text="Pull to refresh" on-refresh="doRefresh()">
+    </ion-refresher>
     <ion-list ng-repeat="hashtag in geotweetsC.controllerData.hashtags">
       <ion-item
         class="item-remove-animate item-avatar item-icon-right" type="item-text-wrap" ui-sref="main.tweetsbyhashtag({hashtag:hashtag.name})">
