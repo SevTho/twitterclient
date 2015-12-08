@@ -1,3 +1,3 @@
 # TwitterClient
 
-A beautiful peace of code
+A beautiful piece of code
